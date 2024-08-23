@@ -1,7 +1,13 @@
 import fetch from 'node-fetch';
+import fs from 'fs';
 
-const token = 'TOKEN'; // Replace with your own token
-const MAX_REPOSITORIES = 100; // Limite de repositórios a serem processados
+const token = 'TOKEN'; // Insira seu proprio token
+const MAX_REPOSITORIES = 1000; // Limite de repositórios a serem processados
+
+// Crie um stream de gravação
+const writeStream = fs.createWriteStream('data.csv');
+
+let repoIndex = 1; // Iniciar a numeração dos repositórios
 
 const fetchData = async (cursor = null, count = 0) => {
   if (count >= MAX_REPOSITORIES) {
@@ -92,20 +98,12 @@ const fetchData = async (cursor = null, count = 0) => {
         repo.closedIssues.totalCount / repo.totalIssues.totalCount :
         0;
 
-      console.log(`Repository: ${repo.name}`);
-      console.log(`Age: ${age} days`);
-      console.log(`Pull requests: ${repo.pullRequests.totalCount}`);
-      console.log(`Releases: ${repo.releases.totalCount}`);
-      console.log(`Time since last update: ${timeSinceLastUpdate} days`);
-      console.log(`Time since last commit: ${timeSinceLastCommit} days`);
-      console.log(`Primary language: ${repo.primaryLanguage ? repo.primaryLanguage.name : 'None'}`);
-      console.log(`Issue ratio: ${issueRatio}`);
-      console.log(`Updated At: ${updatedAt}`);
-      console.log(`Last Commit Date: ${lastCommitDate}`);
-      console.log('------------------------------');
+      // Escreva os dados no arquivo .csv
+      writeStream.write(`Repository ${repoIndex}:\n Name: ${repo.name},\n Age: ${age} days,\n Pull requests: ${repo.pullRequests.totalCount},\n Releases: ${repo.releases.totalCount},\n Time since last update: ${timeSinceLastUpdate} days,\n Time since last commit: ${timeSinceLastCommit} days,\n Primary language: ${repo.primaryLanguage ? repo.primaryLanguage.name : 'None'},\n Issue ratio: ${issueRatio},\n Updated At: ${updatedAt},\n Last Commit Date: ${lastCommitDate}\n ------------------------------------------\n`);
 
       // Incrementar o contador de repositórios processados
       count++;
+      repoIndex++; // Incrementar a numeração dos repositórios
     });
 
     // Se houver mais páginas e ainda não atingiu o limite de repositórios, faça uma nova requisição
@@ -117,4 +115,7 @@ const fetchData = async (cursor = null, count = 0) => {
   }
 };
 
-fetchData();
+fetchData().then(() => {
+  // Feche o stream de gravação quando terminar
+  writeStream.end();
+});
