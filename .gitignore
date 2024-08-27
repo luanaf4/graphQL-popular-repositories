@@ -18,3 +18,6 @@ build/
 # IDE-specific files
 .vscode/
 .idea/
+
+# Temporary files
+data2.csv
