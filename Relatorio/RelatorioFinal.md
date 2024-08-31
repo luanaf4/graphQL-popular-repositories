@@ -56,6 +56,9 @@ Para responder às questões de pesquisa, coletamos dados de 1.000 repositórios
 #### RQ 06. Sistemas populares possuem um alto percentual de issues fechadas?
   _Acreditamos que esses sistemas possuem um alto percentual de issues fechadas._
 
+### RQ 07 Sistemas escritos em linguagens mais populares recebem mais contribuição externa, lançam mais releases e são atualizados com mais frequência? 
+  _Esperamos que sistemas escritos em linguagens mais populares recebam mais contribuição externa, lancem mais releases e sejam atualizados com mais frequência._
+
 ## Resultados Obtidos
 
 #### RQ 01. Sistemas populares são maduros/antigos?
@@ -100,6 +103,22 @@ Para responder às questões de pesquisa, coletamos dados de 1.000 repositórios
   - Métrica: Proporção de issues fechadas
   - Mediana: 0.859
   - A proporção de 85.9% de issues fechadas confirma que os sistemas populares mantêm um alto percentual de resolução de problemas.
+
+#### RQ 07 Sistemas escritos em linguagens mais populares recebem mais contribuição externa, lançam mais releases e são atualizados com mais frequência?
+  - Os resultados indicam que, em média, os repositórios populares tendem a receber um número significativamente maior de Pull Requests aceitos e a ter uma frequência de releases mais baixa. No entanto, o tempo médio desde o último commit é relativamente similar entre os dois grupos.
+  - Repositórios Populares:
+    - Mediana de Pull Requests Aceitas: 733
+    - Mediana de Releases: 46
+    - Mediana do Tempo Desde o Último Commit (dias): 7
+    - Total de Repositórios Populares: 737
+
+  - Repositórios Não Populares:
+    - Mediana de Pull Requests Aceitas: 285
+    - Mediana de Releases: 0
+    - Mediana do Tempo Desde o Último Commit (dias): 5
+    - Total de Repositórios Não Populares: 263
+
+- Embora os resultados indiquem uma tendência para os repositórios populares receberem mais contribuições e lançarem mais releases, é importante ressaltar que existem muitas exceções e que a relação entre popularidade da linguagem e as métricas analisadas é complexa e que o número total de repositórios populares é bem maior que os não populares. 
 
 ## Conclusão
 

@@ -21,6 +21,111 @@ function countCategories(values) {
   });
   return counts;
 }
+// Função para analisar agrupando populares e não populares
+function analyzeByPopularityGroup() {
+  const popularLanguages = ['JavaScript', 'Python', 'TypeScript', 'Java', 'C#', 'C++', 'PHP', 'C', 'Shell', 'Go', 'Hcl', 'Kotlin', 'Dart', 'SCSS', 'Ruby'];
+
+  const popularPullRequests = [];
+  const popularReleases = [];
+  const popularTimesSinceLastCommit = [];
+
+  const nonPopularPullRequests = [];
+  const nonPopularReleases = [];
+  const nonPopularTimesSinceLastCommit = [];
+  let countPopular = 0;
+  let countNonPopular = 0;
+
+  for (let i = 0; i < languages.length; i++) {
+    const language = languages[i];
+    if (!language) continue;
+
+    const isPopular = popularLanguages.includes(language);
+    const pullRequestCount = pullRequests[i];
+    const releaseCount = releases[i];
+    const timeSinceLastCommit = timesSinceLastCommit[i];
+
+    if (isPopular) {
+      popularPullRequests.push(pullRequestCount);
+      popularReleases.push(releaseCount);
+      popularTimesSinceLastCommit.push(timeSinceLastCommit);
+      countPopular++;
+    } else {
+      nonPopularPullRequests.push(pullRequestCount);
+      nonPopularReleases.push(releaseCount);
+      nonPopularTimesSinceLastCommit.push(timeSinceLastCommit);
+      countNonPopular++;
+    }
+  }
+  console.log('\n----------------------------------------------------');
+  console.log('\nAnálise de Repositórios Populares vs Não Populares:');
+  console.log(`\nRepositórios Populares:`);
+  console.log(`  Mediana de Pull Requests Aceitas: ${calculateMedian(popularPullRequests.filter(n => !isNaN(n)))}`);
+  console.log(`  Mediana de Releases: ${calculateMedian(popularReleases.filter(n => !isNaN(n)))}`);
+  console.log(`  Mediana do Tempo Desde o Último Commit (dias): ${calculateMedian(popularTimesSinceLastCommit.filter(n => !isNaN(n)))}`);
+  console.log(`  Total de Repositórios Populares: ${countPopular}`);
+
+  console.log(`\nRepositórios Não Populares:`);
+  console.log(`  Mediana de Pull Requests Aceitas: ${calculateMedian(nonPopularPullRequests.filter(n => !isNaN(n)))}`);
+  console.log(`  Mediana de Releases: ${calculateMedian(nonPopularReleases.filter(n => !isNaN(n)))}`);
+  console.log(`  Mediana do Tempo Desde o Último Commit (dias): ${calculateMedian(nonPopularTimesSinceLastCommit.filter(n => !isNaN(n)))}`);
+  console.log(`  Total de Repositórios Não Populares: ${countNonPopular}`);
+}
+
+// Função para analisar por linguagem
+function analyzeByLanguage() {
+  // Linguagens consideradas populares com base na reportagem
+  const popularLanguages = ['JavaScript', 'Python', 'TypeScript', 'Java', 'C#', 'C++', 'PHP', 'C', 'Shell', 'Go', 'Hcl', 'Kotlin', 'Dart', 'SCSS', 'Ruby'];
+
+  // Agrupamento por linguagem
+  const dataByLanguage = {};
+
+  for (let i = 0; i < languages.length; i++) {
+    const language = languages[i];
+    if (!language) continue;
+
+    // Inicializa o agrupamento para a linguagem
+    if (!dataByLanguage[language]) {
+      dataByLanguage[language] = {
+        pullRequests: [],
+        releases: [],
+        timeSinceLastCommit: []
+      };
+    }
+
+    // Adiciona os dados correspondentes ao agrupamento da linguagem
+    dataByLanguage[language].pullRequests.push(pullRequests[i]);
+    dataByLanguage[language].releases.push(releases[i]);
+    dataByLanguage[language].timeSinceLastCommit.push(timesSinceLastCommit[i]);
+  }
+
+  // Ordenação das linguagens: populares primeiro, depois as demais
+  const orderedLanguages = Object.keys(dataByLanguage).sort((a, b) => {
+    const isAPopular = popularLanguages.includes(a);
+    const isBPopular = popularLanguages.includes(b);
+
+    // Ordena primeiro por popularidade
+    if (isAPopular && !isBPopular) return -1; // A é popular, B não é
+    if (!isAPopular && isBPopular) return 1;  // B é popular, A não é
+
+    // Se ambos são populares ou ambos não são, ordena alfabeticamente
+    return a.localeCompare(b);
+  });
+
+  // Análise dos resultados ordenados
+  console.log('\nAnálise de Sistemas por Linguagem (RQ 07):');
+  for (const language of orderedLanguages) {
+    const data = dataByLanguage[language];
+    const isPopular = popularLanguages.includes(language);
+    const medianPullRequests = calculateMedian(data.pullRequests.filter(n => !isNaN(n)));
+    const medianReleases = calculateMedian(data.releases.filter(n => !isNaN(n)));
+    const medianTimeSinceLastCommit = calculateMedian(data.timeSinceLastCommit.filter(n => !isNaN(n)));
+
+    console.log(`\nLinguagem: ${language} (${isPopular ? 'Popular' : 'Menos Popular'})`);
+    console.log(`  Mediana de Pull Requests Aceitas: ${medianPullRequests}`);
+    console.log(`  Mediana de Releases: ${medianReleases}`);
+    console.log(`  Mediana do Tempo Desde o Último Commit (dias): ${medianTimeSinceLastCommit}`);
+  }
+}
 
 // Leitura do arquivo CSV
 const readStream = fs.createReadStream('data.csv');
@@ -51,7 +156,7 @@ rl.on('line', (line) => {
       timesSinceLastCommit.push(currentRepo.timeSinceLastCommit);
       issueRatios.push(currentRepo.issueRatio);
       languages.push(currentRepo.language);
-      
+
       // Resetar o objeto currentRepo
       currentRepo = {};
     }
@@ -82,7 +187,7 @@ rl.on('line', (line) => {
       currentRepo.timeSinceLastCommit = Number(value.replace(/[^\d]/g, ''));
       break;
     case 'Primary language':
-      currentRepo.language = value;
+      currentRepo.language = value.trim().replace(/,+$/, '');
       break;
     case 'Issue ratio':
       currentRepo.issueRatio = parseFloat(value);
@@ -118,4 +223,7 @@ rl.on('close', () => {
   for (const [language, count] of Object.entries(languageCounts)) {
     console.log(`${language}: ${count}`);
   }
+
+  analyzeByLanguage();
+  analyzeByPopularityGroup();
 });
