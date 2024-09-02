@@ -104,7 +104,7 @@ Para responder às questões de pesquisa, coletamos dados de 1.000 repositórios
   - Mediana: 0.859
   - A proporção de 85.9% de issues fechadas confirma que os sistemas populares mantêm um alto percentual de resolução de problemas.
 
-#### RQ 07 Sistemas escritos em linguagens mais populares recebem mais contribuição externa, lançam mais releases e são atualizados com mais frequência?
+#### RQ 07. Sistemas escritos em linguagens mais populares recebem mais contribuição externa, lançam mais releases e são atualizados com mais frequência?
   - Os resultados indicam que, em média, os repositórios populares tendem a receber um número significativamente maior de Pull Requests aceitos e a ter uma frequência de releases mais baixa. No entanto, o tempo médio desde o último commit é relativamente similar entre os dois grupos.
   - Repositórios Populares:
     - Mediana de Pull Requests Aceitas: 733
@@ -122,6 +122,23 @@ Para responder às questões de pesquisa, coletamos dados de 1.000 repositórios
 
 ## Conclusão
 
+Os resultados obtidos nesta análise fornecem dados significativos sobre as características dos repositórios open-source mais populares no GitHub e nos permitem avaliar as hipóteses iniciais.
+
+Em relação à primeira hipótese, de que sistemas populares são maduros/antigos, os dados confirmam essa suposição. A idade média de mais de 8 anos para esses repositórios indica que eles são bastante maduros.
+
+A segunda hipótese, de que sistemas populares recebem muita contribuição externa, também foi confirmada. A mediana de 580 pull requests aceitas sugere que esses repositórios atraem um número significativo de contribuições da comunidade.
+
+Quanto à terceira hipótese, de que sistemas populares lançam releases com frequência, os dados também a confirmam. Com uma mediana de 30.5 releases, fica evidente que esses repositórios estão em constante evolução e atualização.
+
+A quarta hipótese, de que sistemas populares são atualizados com frequência, foi igualmente confirmada. A mediana de apenas 7 dias desde a última atualização demonstra que esses repositórios são mantidos ativamente.
+
+A quinta hipótese, de que sistemas populares são escritos nas linguagens mais populares, foi parcialmente confirmada. Embora as linguagens mais utilizadas sejam de fato populares (Python, JavaScript, TypeScript), há uma variedade de outras linguagens presentes, mostrando que a popularidade de um repositório não está estritamente ligada à linguagem de programação utilizada.
+
+A sexta hipótese, de que sistemas populares possuem um alto percentual de issues fechadas, foi confirmada. A proporção de 85.9% de issues fechadas indica que os desenvolvedores desses projetos estão ativamente resolvendo problemas relatados pelos usuários.
+
+Finalmente, a sétima hipótese, de que sistemas escritos em linguagens mais populares recebem mais contribuição externa, lançam mais releases e são atualizados com mais frequência, foi parcialmente confirmada. Os repositórios populares tendem a receber mais contribuições e lançar mais releases, mas o tempo desde a última atualização é semelhante entre repositórios populares e não populares.
+
+Esses resultados destacam a importância do engajamento da comunidade, da manutenção ativa e da maturidade na popularidade de um repositório open-source. No entanto, também indicam que outros fatores, como a linguagem de programação utilizada, podem não ser tão determinantes para a popularidade de um repositório quanto inicialmente pensávamos.
 
 
 
