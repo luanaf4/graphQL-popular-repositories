@@ -141,4 +141,21 @@ Finalmente, a sétima hipótese, de que sistemas escritos em linguagens mais pop
 Esses resultados destacam a importância do engajamento da comunidade, da manutenção ativa e da maturidade na popularidade de um repositório open-source. No entanto, também indicam que outros fatores, como a linguagem de programação utilizada, podem não ser tão determinantes para a popularidade de um repositório quanto inicialmente pensávamos.
 
 
+## Gráficos
+
+<img width="904" alt="image" src="https://github.com/user-attachments/assets/720bb15f-ff99-4f52-bbc8-5316fac130da">
+
+<img width="1206" alt="image" src="https://github.com/user-attachments/assets/3c013c5a-de28-4816-bb4a-ce063be2771c">
+
+<img width="1188" alt="image" src="https://github.com/user-attachments/assets/4ae326a2-6d1b-406f-b552-759db85dd216">
+
+<img width="1183" alt="image" src="https://github.com/user-attachments/assets/56b58f70-845d-4df5-8853-40f0418d8cad">
+
+<img width="1203" alt="image" src="https://github.com/user-attachments/assets/47948f1d-14ff-49a4-92c4-3661323c7c13">
+
+
+
+
+
+
 
