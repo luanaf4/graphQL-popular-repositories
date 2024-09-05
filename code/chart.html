@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise de Repositórios</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            width: 80%;
+            margin: 20px auto;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="chart-container">
+        <canvas id="mediansChart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="languagesChart"></canvas>
+    </div>
+    <h2>Análise de Repositórios Populares vs Não Populares:</h2>
+    <div class="chart-container">
+        <canvas id="pullRequestsChart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="releasesChart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="lastCommitChart"></canvas>
+    </div>
+
+    <script>
+        // Gráfico de Medianas
+        const mediansCtx = document.getElementById('mediansChart').getContext('2d');
+        new Chart(mediansCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Idade (anos)', 'Pull Requests', 'Releases', 'Tempo desde último commit (dias)', 'Proporção de issues fechadas'],
+                datasets: [{
+                    label: 'Medianas',
+                    data: [8.12, 580, 30.5, 7, 0.86],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)',
+                        'rgba(255, 159, 64, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Medianas das Métricas dos Repositórios'
+                    }
+                }
+            }
+        });
+
+        // Gráfico de Linguagens
+        const languagesCtx = document.getElementById('languagesChart').getContext('2d');
+        new Chart(languagesCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Python', 'JavaScript', 'TypeScript', 'None', 'Go', 'Java', 'C++', 'Rust', 'C', 'Shell', 'Jupyter Notebook', 'HTML', 'Ruby', 'C#', 'Swift'],
+                datasets: [{
+                    label: 'Número de Repositórios',
+                    data: [163, 157, 132, 110, 75, 59, 51, 36, 24, 23, 21, 18, 14, 14, 13],
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Número de Repositórios'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Linguagem de Programação'
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Top 15 Linguagens de Programação nos Repositórios'
+                    }
+                }
+            }
+        });
+
+        // Função para criar gráficos de comparação
+        function createComparisonChart(ctx, label, popularValue, nonPopularValue, maxY = null) {
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Repositórios Populares', 'Repositórios Não Populares'],
+                    datasets: [{
+                        label: label,
+                        data: [popularValue, nonPopularValue],
+                        backgroundColor: ['rgba(255, 99, 132, 0.6)', 'rgba(54, 162, 235, 0.6)'],
+                        borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Valor Mediano'
+                            },
+                            max: maxY
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: `Comparação de ${label}`
+                        }
+                    }
+                }
+            });
+        }
+
+        // Gráfico de Pull Requests
+        const pullRequestsCtx = document.getElementById('pullRequestsChart').getContext('2d');
+        createComparisonChart(pullRequestsCtx, 'Pull Requests', 733, 285);
+
+        // Gráfico de Releases
+        const releasesCtx = document.getElementById('releasesChart').getContext('2d');
+        createComparisonChart(releasesCtx, 'Releases', 46, 0);
+
+        // Gráfico de Tempo desde o último commit
+        const lastCommitCtx = document.getElementById('lastCommitChart').getContext('2d');
+        createComparisonChart(lastCommitCtx, 'Tempo desde último commit (dias)', 7, 5, 10);
+    </script>
+</body>
+</html>
