@@ -94,7 +94,9 @@ Para responder às questões de pesquisa, coletamos dados de 1.000 repositórios
     - Rust: 36
     - ... (entre outras)
       
-  - Os dados mostram que os sistemas populares são frequentemente escritos em linguagens mais populares. 
+  - Os dados mostram que os sistemas populares são frequentemente escritos em linguagens mais populares.
+
+    <img width="1221" alt="image" src="https://github.com/user-attachments/assets/99370d83-277d-4321-afe9-2ce1315906b9">
 
 > [!NOTE]
 > Como métrica para definir quais são as linguagens mais populares tomamos como base as linguagens mais utilizadas em 2023, de acordo com o GitHub [(The most popular programming languages)](https://github.blog/news-insights/research/the-state-of-open-source-and-ai/#the-most-popular-programming-languages).
@@ -103,6 +105,8 @@ Para responder às questões de pesquisa, coletamos dados de 1.000 repositórios
   - Métrica: Proporção de issues fechadas
   - Mediana: 0.859
   - A proporção de 85.9% de issues fechadas confirma que os sistemas populares mantêm um alto percentual de resolução de problemas.
+
+<img width="904" alt="image" src="https://github.com/user-attachments/assets/720bb15f-ff99-4f52-bbc8-5316fac130da">
 
 #### RQ 07. Sistemas escritos em linguagens mais populares recebem mais contribuição externa, lançam mais releases e são atualizados com mais frequência?
   - Os resultados indicam que, em média, os repositórios populares tendem a receber um número significativamente maior de Pull Requests aceitos e a ter uma frequência de releases mais baixa. No entanto, o tempo médio desde o último commit é relativamente similar entre os dois grupos.
@@ -118,7 +122,13 @@ Para responder às questões de pesquisa, coletamos dados de 1.000 repositórios
     - Mediana do Tempo Desde o Último Commit (dias): 5
     - Total de Repositórios Não Populares: 263
 
-- Embora os resultados indiquem uma tendência para os repositórios populares receberem mais contribuições e lançarem mais releases, é importante ressaltar que existem muitas exceções e que a relação entre popularidade da linguagem e as métricas analisadas é complexa e que o número total de repositórios populares é bem maior que os não populares. 
+- Embora os resultados indiquem uma tendência para os repositórios populares receberem mais contribuições e lançarem mais releases, é importante ressaltar que existem muitas exceções e que a relação entre popularidade da linguagem e as métricas analisadas é complexa e que o número total de repositórios populares é bem maior que os não populares.
+
+<img width="1188" alt="image" src="https://github.com/user-attachments/assets/4ae326a2-6d1b-406f-b552-759db85dd216">
+
+<img width="1183" alt="image" src="https://github.com/user-attachments/assets/56b58f70-845d-4df5-8853-40f0418d8cad">
+
+<img width="1203" alt="image" src="https://github.com/user-attachments/assets/47948f1d-14ff-49a4-92c4-3661323c7c13">
 
 ## Conclusão
 
@@ -139,19 +149,6 @@ A sexta hipótese, de que sistemas populares possuem um alto percentual de issue
 Finalmente, a sétima hipótese, de que sistemas escritos em linguagens mais populares recebem mais contribuição externa, lançam mais releases e são atualizados com mais frequência, foi parcialmente confirmada. Os repositórios populares tendem a receber mais contribuições e lançar mais releases, mas o tempo desde a última atualização é semelhante entre repositórios populares e não populares.
 
 Esses resultados destacam a importância do engajamento da comunidade, da manutenção ativa e da maturidade na popularidade de um repositório open-source. No entanto, também indicam que outros fatores, como a linguagem de programação utilizada, podem não ser tão determinantes para a popularidade de um repositório quanto inicialmente pensávamos.
-
-
-## Gráficos
-
-<img width="904" alt="image" src="https://github.com/user-attachments/assets/720bb15f-ff99-4f52-bbc8-5316fac130da">
-
-<img width="1221" alt="image" src="https://github.com/user-attachments/assets/99370d83-277d-4321-afe9-2ce1315906b9">
-
-<img width="1188" alt="image" src="https://github.com/user-attachments/assets/4ae326a2-6d1b-406f-b552-759db85dd216">
-
-<img width="1183" alt="image" src="https://github.com/user-attachments/assets/56b58f70-845d-4df5-8853-40f0418d8cad">
-
-<img width="1203" alt="image" src="https://github.com/user-attachments/assets/47948f1d-14ff-49a4-92c4-3661323c7c13">
 
 
 
