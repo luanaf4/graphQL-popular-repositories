@@ -145,7 +145,7 @@ Esses resultados destacam a importância do engajamento da comunidade, da manute
 
 <img width="904" alt="image" src="https://github.com/user-attachments/assets/720bb15f-ff99-4f52-bbc8-5316fac130da">
 
-<img width="1206" alt="image" src="https://github.com/user-attachments/assets/3c013c5a-de28-4816-bb4a-ce063be2771c">
+<img width="1221" alt="image" src="https://github.com/user-attachments/assets/99370d83-277d-4321-afe9-2ce1315906b9">
 
 <img width="1188" alt="image" src="https://github.com/user-attachments/assets/4ae326a2-6d1b-406f-b552-759db85dd216">
 
